@@ -1,0 +1,17 @@
+<table border="1" align="center">
+    <thead>
+    <tr>
+        <td>Url</td>
+        <td>Request</td>
+        <td>Response</td>
+        <td>Status</td>
+        <td>Ip</td>
+        <td>DateTime</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for log in logs %}
+        {{ include('@RusavskiyAVRequestLog/table_row.html.twig', {'log': log, 'timezone': timezone}) }}
+    {% endfor %}
+    </tbody>
+</table>

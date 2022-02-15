@@ -1,0 +1,25 @@
+services:
+  _defaults:
+    public: false
+
+  RusavskiyAV\RequestLogBundle\RequestLogger:
+    arguments:
+      $log_file: '%kernel.logs_dir%/%kernel.environment%_request_log.log'
+
+  RusavskiyAV\RequestLogBundle\EventListener\ResponseListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.response }
+    arguments:
+      $requestLogger: '@rusavskiyav_request_log.request_log'
+      $logger: '@logger'
+
+  RusavskiyAV\RequestLogBundle\Controller\IndexController:
+    arguments:
+      $requestLogger: '@rusavskiyav_request_log.request_log'
+      $logger: '@logger'
+    calls:
+      - setContainer: ['@service_container']
+    public: true
+
+  rusavskiyav_request_log.request_log: '@RusavskiyAV\RequestLogBundle\RequestLogger'
+  RusavskiyAV\RequestLogBundle\RequestLoggerInterface: '@rusavskiyav_request_log.request_log'

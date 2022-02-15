@@ -1,0 +1,8 @@
+<tr>
+    <td>{{ log.getUrl() }}</td>
+    <td>{{ log.getRequest()|nl2br }}</td>
+    <td>{{ log.getResponse()|nl2br }}</td>
+    <td>{{ log.getStatus() }}</td>
+    <td>{{ log.getIp() }}</td>
+    <td>{{ log.getDateTime()|date('Y-m-d H:m:i', timezone) }}</td>
+</tr>

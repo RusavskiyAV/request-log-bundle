@@ -1,0 +1,11 @@
+<html>
+    <body>
+        {{ include('@RusavskiyAVRequestLog/filters.html.twig') }}
+
+        {% if logs is empty %}
+                Логов нет
+        {% else %}
+                {{ include('@RusavskiyAVRequestLog/table.html.twig', {'logs': logs, 'timezone': timezone}) }}
+        {% endif %}
+    </body>
+</html>

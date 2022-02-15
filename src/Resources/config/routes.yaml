@@ -1,0 +1,3 @@
+request_log_index:
+  path: /admin/http-log/
+  controller: RusavskiyAV\RequestLogBundle\Controller\IndexController::index
